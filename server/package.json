@@ -1,0 +1,27 @@
+{
+  "name": "t9server",
+  "version": "1.0.0",
+  "description": "Koa server with API for receiving numbers and transform them in a string.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MalgAmoe/t9ers.git"
+  },
+  "keywords": [
+    "t9"
+  ],
+  "author": "Yann Jubelin",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/MalgAmoe/t9ers/issues"
+  },
+  "homepage": "https://github.com/MalgAmoe/t9ers#readme",
+  "dependencies": {
+    "koa": "^2.2.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.2.0"
+  }
+}
