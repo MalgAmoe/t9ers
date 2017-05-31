@@ -1,11 +1,12 @@
 const Koa = require('koa');
 const app = new Koa();
-const router = require('koa-router')();
 const bodyparser = require('koa-bodyparser');
 const cors = require('koa-cors');
 
-app.use(ctx => {
-  ctx.body = 'Hello Bro!'
-});
+const router = require('./router.js')
 
-app.listen(3000);
+app
+  .use(bodyparser())
+  .use(router.routes())
+
+app.listen(3001);
