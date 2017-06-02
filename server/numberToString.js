@@ -39,6 +39,7 @@ t.mixWordsAndCharacters = function(words, characters) {
 }
 
 t.getPossibleWordsFromNumbers = function(numbersToTransform) {
+  numbersToTransform = numbersToTransform.split('');
   let words = [];
   numbersToTransform.forEach(number => {
     if (t.numbers.indexOf(number) !== -1){
