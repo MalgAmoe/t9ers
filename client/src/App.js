@@ -31,15 +31,27 @@ class App extends Component {
     }
   }
 
+  handleSend = () => {
+    console.log('sending');
+  }
+
+  handleChangeWord = () => {
+    console.log('change word');
+  }
+
   render() {
     return (
       <div className="App">
         <div style={styles.screen}>hey</div>
-        <input
-          style={styles.input}
-          value={this.state.text}
-          placeholder='1234567890*'
-          onKeyDown={this.inputHandler}/>
+        <button onClick={this.handleChangeWord}>Next Word</button>
+        <div style={styles.numbers}>
+          <input
+            style={styles.input}
+            value={this.state.text}
+            placeholder='1234567890*'
+            onKeyDown={this.inputHandler}/>
+          <button onClick={this.handleSend}>Send</button>
+        </div>
       </div>
     );
   }
