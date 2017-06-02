@@ -27,7 +27,21 @@ class App extends Component {
   }
 
   handleSend = () => {
-    console.log('sending');
+    const numbers  = JSON.stringify({
+      'numbers': this.props.numbers
+    })
+
+    fetch('http://localhost:3001/number', {
+      method: 'post',
+      body: numbers,
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    })
+    .then(response => response.json())
+    .then(words => {
+      console.log(words);
+    })
   }
 
   handleChangeWord = () => {
