@@ -6,6 +6,7 @@ const cors = require('koa-cors');
 const router = require('./router.js')
 
 app
+  .use(cors())
   .use(bodyparser())
   .use(router.routes())
 

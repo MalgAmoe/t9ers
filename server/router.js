@@ -4,7 +4,9 @@ const transform = require('./numberToString');
 router
   .post('/number', async(ctx, next) => {
     const data = ctx.request.body;
-    ctx.response.body = transform.getPossibleWordsFromNumbers(data.number);
+    if(data.numbers) {
+      ctx.response.body = transform.getPossibleWordsFromNumbers(data.numbers);
+    }
     ctx.status = 200;
     next();
   })
