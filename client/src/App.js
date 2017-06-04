@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addNumber, eraseNumber } from './store/actions';
+import {
+  addNumber,
+  eraseNumber,
+  sendNumbers,
+  changeWord
+} from './store/actions';
+
 import './App.css';
 
 const styles = {
@@ -17,7 +23,7 @@ const styles = {
 const acceptedInputs = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '*', '0'];
 
 class App extends Component {
-
+  
   inputHandler = (event) => {
     if (acceptedInputs.indexOf(event.key) !== -1) {
       this.props.addNumber(event.key);
@@ -30,28 +36,17 @@ class App extends Component {
     const numbers  = JSON.stringify({
       'numbers': this.props.numbers
     })
-
-    fetch('http://localhost:3001/number', {
-      method: 'post',
-      body: numbers,
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      })
-    })
-    .then(response => response.json())
-    .then(words => {
-      console.log(words);
-    })
+    this.props.sendNumbers('POST', numbers);
   }
 
   handleChangeWord = () => {
-    console.log('change word');
+    this.props.changeWord()
   }
 
   render() {
     return (
       <div className="App">
-        <div style={styles.screen}>hey</div>
+        <div style={styles.screen}>{this.props.words[this.props.selectedWord]}</div>
         <button onClick={this.handleChangeWord}>Next Word</button>
         <div style={styles.numbers}>
           <input
@@ -67,12 +62,16 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  numbers: state.numbers
+  numbers: state.numbers,
+  words: state.words,
+  selectedWord: state.selectedWord
 })
 
 const mapDispatchToProps = (dispatch) => ({
   addNumber: (numbers) => dispatch(addNumber(numbers)),
-  eraseNumber: () => dispatch(eraseNumber())
+  eraseNumber: () => dispatch(eraseNumber()),
+  sendNumbers: (method, body) => dispatch(sendNumbers(method, body)),
+  changeWord: () => dispatch(changeWord())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
