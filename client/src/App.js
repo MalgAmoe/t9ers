@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+import Screen from './Screen';
+
 import {
   addNumber,
   eraseNumber,
@@ -10,20 +13,18 @@ import {
 import './App.css';
 
 const styles = {
-  screen: {
-    backgroundColor: '#00d300',
-    width: 200,
-    height: 80,
-    textAlign: 'left',
-    padding: 10,
-    boxSizing: 'border-box'
+  container: {
+
+  },
+  screenContainer: {
+
   }
 }
 
 const acceptedInputs = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '*', '0'];
 
 class App extends Component {
-  
+
   inputHandler = (event) => {
     if (acceptedInputs.indexOf(event.key) !== -1) {
       this.props.addNumber(event.key);
@@ -46,15 +47,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div style={styles.screen}>{this.props.words[this.props.selectedWord]}</div>
-        <button onClick={this.handleChangeWord}>Next Word</button>
-        <div style={styles.numbers}>
-          <input
-            style={styles.input}
-            value={this.props.numbers}
-            placeholder='1234567890*'
-            onKeyDown={this.inputHandler}/>
-          <button onClick={this.handleSend}>Send</button>
+        <div style={styles.container}>
+          <div style={styles.screenContainer}>
+            <Screen />
+          </div>
+          <button onClick={this.handleChangeWord}>Next Word</button>
+          <div style={styles.numbers}>
+            <input
+              style={styles.input}
+              value={this.props.numbers}
+              placeholder='1234567890*'
+              onKeyDown={this.inputHandler}/>
+            <button onClick={this.handleSend}>Send</button>
+          </div>
         </div>
       </div>
     );
@@ -62,9 +67,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  numbers: state.numbers,
-  words: state.words,
-  selectedWord: state.selectedWord
+  numbers: state.numbers
 })
 
 const mapDispatchToProps = (dispatch) => ({
