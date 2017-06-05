@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import {
   changeWord,
-  eraseNumber
+  eraseNumber,
+  sendNumbers
 } from '../store/actions';
 
 const styles = {
@@ -18,10 +19,11 @@ class Functions extends Component {
     this.props.changeWord();
   }
 
-  handleCancel = () => {
-    this.props.eraseNumber();
+  handleCancel = async() => {
+    await this.props.eraseNumber();
+    this.props.sendNumbers('POST', this.props.numbers);
   }
-  
+
   render() {
     return (
       <div style={styles.functionsContainer}>
@@ -32,9 +34,14 @@ class Functions extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  numbers: state.numbers
+})
+
 const mapDispatchToProps = (dispatch) => ({
   changeWord: () => dispatch(changeWord()),
   eraseNumber: () => dispatch(eraseNumber()),
+  sendNumbers: (method, body) => dispatch(sendNumbers(method, body))
 })
 
-export default connect(null, mapDispatchToProps)(Functions)
+export default connect(mapStateToProps, mapDispatchToProps)(Functions)

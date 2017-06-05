@@ -26,10 +26,7 @@ class KeyPad extends Component {
   }
 
   handleSend = () => {
-    const numbers  = JSON.stringify({
-      'numbers': this.props.numbers
-    })
-    this.props.sendNumbers('POST', numbers);
+    this.props.sendNumbers('POST', this.props.numbers);
   }
 
   render(){
