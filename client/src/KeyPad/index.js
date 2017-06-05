@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import NumberKey from './components/NumberKey';
+
 import {
   addNumber,
   eraseNumber,
@@ -9,11 +11,16 @@ import {
 
 const styles = {
   keysContainer: {
-
+    width: 160,
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
   }
 }
 
 const acceptedInputs = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '*', '0'];
+const characters = ['.,?!', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz', '+', '_']
 
 class KeyPad extends Component {
 
@@ -25,6 +32,11 @@ class KeyPad extends Component {
     }
   }
 
+  addNumberHandler = async(number) => {
+    await this.props.addNumber(number);
+    this.props.sendNumbers('POST', this.props.numbers);
+  }
+
   handleSend = () => {
     this.props.sendNumbers('POST', this.props.numbers);
   }
@@ -32,12 +44,15 @@ class KeyPad extends Component {
   render(){
     return(
       <div style={styles.keysContainer}>
-        <input
-          style={styles.input}
-          value={this.props.numbers}
-          placeholder='1234567890*'
-          onKeyDown={this.inputHandler}/>
-        <button onClick={this.handleSend}>Send</button>
+        {
+          acceptedInputs.map((key, i) => (
+            <NumberKey
+              key={i}
+              number={acceptedInputs[i]}
+              letters={characters[i]}
+              addNumber={this.addNumberHandler}/>
+          ))
+        }
       </div>
     )
   }
