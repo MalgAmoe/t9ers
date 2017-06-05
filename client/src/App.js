@@ -10,7 +10,11 @@ const styles = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'black',
+    paddingTop: 50,
+    paddingBottom: 10,
+    borderRadius: 60
   }
 }
 

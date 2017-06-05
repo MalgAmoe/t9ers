@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const styles = {
   screen: {
     backgroundColor: '#00d300',
-    width: 200,
+    width: 170,
     height: 80,
     textAlign: 'left',
     padding: 10,

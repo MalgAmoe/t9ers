@@ -6,7 +6,7 @@ const styles = {
     height: 30,
     borderRadius: 10,
     margin: 1,
-    backgroundColor: 'grey',
+    backgroundColor: 'rgba(055, 155, 255, 0.5)',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

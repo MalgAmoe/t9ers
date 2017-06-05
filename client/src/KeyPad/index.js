@@ -15,29 +15,23 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: 'rgba(055, 155, 255, 0.4)',
+    padding: 5,
+    borderBottomLeftRadius: 50,
+    borderBottomRightRadius: 50,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5
   }
 }
 
 const acceptedInputs = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '*', '0'];
-const characters = ['.,?!', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz', '+', '_']
+const characters = ['.,?!', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz', '+', '_'];
 
 class KeyPad extends Component {
 
-  inputHandler = (event) => {
-    if (acceptedInputs.indexOf(event.key) !== -1) {
-      this.props.addNumber(event.key);
-    } else if (event.key === 'Backspace') {
-      this.props.eraseNumber()
-    }
-  }
-
   addNumberHandler = async(number) => {
     await this.props.addNumber(number);
-    this.props.sendNumbers('POST', this.props.numbers);
-  }
-
-  handleSend = () => {
     this.props.sendNumbers('POST', this.props.numbers);
   }
 

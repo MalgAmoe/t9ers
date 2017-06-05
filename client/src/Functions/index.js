@@ -9,7 +9,13 @@ import {
 
 const styles = {
   functionsContainer: {
-
+    width: 160,
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    margin: 10,
+    padding: 5
   }
 }
 
@@ -28,7 +34,7 @@ class Functions extends Component {
     return (
       <div style={styles.functionsContainer}>
         <button onClick={this.handleCancel}>C</button>
-        <button onClick={this.handleChangeWord}>___</button>
+        <button onClick={this.handleChangeWord}>Change Word</button>
       </div>
     )
   }
