@@ -19,7 +19,10 @@ export const changeWord = () => {
   }
 }
 
-export const sendNumbers = (method, body) => {
+export const sendNumbers = (method, numbers) => {
+  const body  = JSON.stringify({
+    'numbers': numbers
+  })
   return {
     type: API,
     method: method,
