@@ -11,7 +11,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: 'black',
+    backgroundColor: 'Aqua',
     paddingTop: 50,
     paddingBottom: 10,
     borderRadius: 60

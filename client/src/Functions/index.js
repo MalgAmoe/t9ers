@@ -14,6 +14,8 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
+    backgroundColor: 'rgba(055, 155, 255, 0.4)',
+    borderRadius: 5,
     margin: 10,
     padding: 5
   }

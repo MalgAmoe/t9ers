@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const styles = {
   screen: {
-    backgroundColor: '#00d300',
+    backgroundColor: 'lime',
     width: 170,
     height: 80,
     textAlign: 'left',
