@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './style.css';
 
 import {
   changeWord,
@@ -29,7 +30,9 @@ class Functions extends Component {
 
   handleCancel = async() => {
     await this.props.eraseNumber();
-    this.props.sendNumbers('POST', this.props.numbers);
+    if(this.props.numbers !== '') {
+      this.props.sendNumbers('POST', this.props.numbers);
+    }
   }
 
   render() {

@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 
 const styles = {
   screen: {
-    backgroundColor: 'lime',
+    backgroundColor: 'rgba(055, 155, 255, 0.4)',
     width: 170,
     height: 80,
     textAlign: 'left',
     padding: 10,
+    borderRadius: 5,
     boxSizing: 'border-box'
   }
 }
