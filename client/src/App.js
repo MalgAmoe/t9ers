@@ -5,7 +5,8 @@ import Screen from './Screen';
 import KeyPad from './KeyPad';
 
 import {
-  changeWord
+  changeWord,
+  eraseNumber
 } from './store/actions';
 
 import './App.css';
@@ -16,11 +17,14 @@ const styles = {
   }
 }
 
-
 class App extends Component {
 
   handleChangeWord = () => {
-    this.props.changeWord()
+    this.props.changeWord();
+  }
+
+  handleCancel = () => {
+    this.props.eraseNumber();
   }
 
   render() {
@@ -29,7 +33,8 @@ class App extends Component {
         <div style={styles.container}>
           <Screen />
           <div style={styles.functionsContainer}>
-            <button onClick={this.handleChangeWord}>Next Word</button>
+            <button onClick={this.handleCancel}>C</button>
+            <button onClick={this.handleChangeWord}>___</button>
           </div>
           <KeyPad />
         </div>
@@ -43,7 +48,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  changeWord: () => dispatch(changeWord())
+  changeWord: () => dispatch(changeWord()),
+  eraseNumber: () => dispatch(eraseNumber()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
